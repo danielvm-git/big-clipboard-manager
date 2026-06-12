@@ -2,7 +2,7 @@ id: e03
 title: "Preferences Window & Settings Management"
 wsjf: 2.8
 total_bcps: 7
-status: in_progress
+status: done
 stories:
   - id: e03s01
     title: "General Preferences Settings"
@@ -19,6 +19,6 @@ stories:
   - id: e03s03
     title: "Clips Management Interface"
     bcps: 3
-    status: todo
+    status: done
     spec: e03s03-management.md
     tasks: e03s03-tasks.yaml

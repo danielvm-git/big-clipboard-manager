@@ -51,6 +51,12 @@ public final class AppState {
         }
     }
     
+    public var confirmBeforeDeleting: Bool {
+        didSet {
+            UserDefaults.standard.set(confirmBeforeDeleting, forKey: "confirmBeforeDeleting")
+        }
+    }
+    
     public let monitor: ClipboardMonitor
     private let storage: StorageManager
     private let paster = ClipboardPaster()
@@ -70,6 +76,7 @@ public final class AppState {
         }
         
         let ignoredApps = UserDefaults.standard.stringArray(forKey: "ignoredAppBundleIds") ?? []
+        let confirmDelete = UserDefaults.standard.object(forKey: "confirmBeforeDeleting") as? Bool ?? true
         
         self.isRecordingEnabled = recording
         self.isAutoStripEnabled = autoStrip
@@ -77,6 +84,7 @@ public final class AppState {
         self.maxRememberedClips = limit
         self.maxDisplayClips = displayLimit
         self.ignoredAppBundleIds = ignoredApps
+        self.confirmBeforeDeleting = confirmDelete
         
         // Sync launch at startup setting with system registration
         do {

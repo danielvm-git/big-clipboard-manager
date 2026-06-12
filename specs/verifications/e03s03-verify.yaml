@@ -1,0 +1,37 @@
+story_id: e03s03
+verified_at: "2026-06-12T05:35:00Z"
+verifier: verify-work
+phases:
+  smoke:
+    passed: true
+  build:
+    passed: true
+    command: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+  typecheck:
+    passed: true
+  lint:
+    passed: true
+    command: "swiftlint"
+  tests:
+    passed: true
+    command: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
+  manual:
+    steps:
+      - step: "Open Preferences and switch to the Clips Management tab"
+        expected: "Displays search field, scrollable list of clips, confirm delete checkbox, and Delete button (disabled initially)"
+        actual: "UI elements rendered correctly, Delete button disabled as expected"
+        passed: true
+      - step: "Filter clips by entering query text"
+        expected: "List updates in real-time, displays matching elements or 'No Match Found'"
+        actual: "Search matched 'xcode' correctly, filtering Safari and other clips"
+        passed: true
+      - step: "Delete a clip with confirmation checked"
+        expected: "Clicking Delete shows NSAlert confirmation dialog. Clip is deleted only if confirmed."
+        actual: "Dialog shown, click Delete successfully deleted from AppState and StorageManager"
+        passed: true
+      - step: "Delete a clip with confirmation unchecked"
+        expected: "Clicking Delete removes the selected clip immediately without prompt"
+        actual: "Selected clip removed immediately and list refreshed"
+        passed: true
+  gaps:
+    closed: true

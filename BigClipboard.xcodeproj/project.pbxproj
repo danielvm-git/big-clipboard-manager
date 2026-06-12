@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08116D1F5F3A5DB4D69C4D2E /* ClipsManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5CDBBCC4CBE1143EA8661 /* ClipsManagementView.swift */; };
 		093E2B9C4FFCAE4994FEC9E8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BF4EAC42260C9A5488BE0F /* AppState.swift */; };
 		1DBD60904EB1F2242EC9DE10 /* IgnoredAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712AE32E56861B1541DB49B /* IgnoredAppsView.swift */; };
 		228D40E25377C84376D51784 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */; };
@@ -44,6 +45,7 @@
 		8E58D37881C3465E56CD177A /* BigClipboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigClipboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF2A5F8D793A98069DD7680 /* DropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
 		93B07DD83D966F3EC4BE848B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		9CE5CDBBCC4CBE1143EA8661 /* ClipsManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsManagementView.swift; sourceTree = "<group>"; };
 		A0F0CCB738F7B58B6C8A6917 /* ClipboardPaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPaster.swift; sourceTree = "<group>"; };
 		D70B593CBE729E0E488C4571 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitorTests.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		5104D4A38BC15B2D7AA8520E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9CE5CDBBCC4CBE1143EA8661 /* ClipsManagementView.swift */,
 				8FF2A5F8D793A98069DD7680 /* DropdownMenu.swift */,
 				8045759EDD6ECE145EA44C55 /* GeneralSettingsView.swift */,
 				5712AE32E56861B1541DB49B /* IgnoredAppsView.swift */,
@@ -215,6 +218,7 @@
 				54C2659FDE0F63A449C34BA4 /* Clip.swift in Sources */,
 				228D40E25377C84376D51784 /* ClipboardMonitor.swift in Sources */,
 				5425995577D57A2E7A4576AD /* ClipboardPaster.swift in Sources */,
+				08116D1F5F3A5DB4D69C4D2E /* ClipsManagementView.swift in Sources */,
 				88BD45D01A605C83A1B96025 /* DropdownMenu.swift in Sources */,
 				C5A0F2ACFDC3556693E9335F /* GeneralSettingsView.swift in Sources */,
 				1DBD60904EB1F2242EC9DE10 /* IgnoredAppsView.swift in Sources */,

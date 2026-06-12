@@ -21,7 +21,13 @@ public struct SettingsView: View {
                     Label("Ignored Apps", systemImage: "hand.raised")
                 }
                 .tag("ignored")
+            
+            ClipsManagementView(appState: appState)
+                .tabItem {
+                    Label("Clips", systemImage: "square.grid.3x1.folder.badge.plus")
+                }
+                .tag("clips")
         }
-        .frame(width: 480, height: 400)
+        .frame(width: 520, height: 440)
     }
 }

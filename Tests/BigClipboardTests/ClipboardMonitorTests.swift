@@ -286,5 +286,55 @@ struct AppStateSettingsTests {
         #expect(monitor.clips.count == 2)
         #expect(monitor.clips.first?.text == "anonymous text")
     }
+    
+    @Test func testClipsSearchAndFiltering() async throws {
+        let state = AppState()
+        let monitor = state.monitor
+        monitor.clearHistory()
+        
+        let pboard = NSPasteboard.general
+        let items = ["XcodeGen build", "git status", "xcodebuild test"]
+        
+        for item in items {
+            pboard.clearContents()
+            pboard.declareTypes([.string], owner: nil)
+            pboard.setString(item, forType: .string)
+            monitor.checkPasteboard()
+        }
+        
+        #expect(state.clips.count == 3)
+        
+        // Let's filter case-insensitive for "xcode"
+        let filtered = state.clips.filter { $0.text.localizedCaseInsensitiveContains("xcode") }
+        #expect(filtered.count == 2)
+        #expect(filtered.contains { $0.text == "XcodeGen build" })
+        #expect(filtered.contains { $0.text == "xcodebuild test" })
+        #expect(!filtered.contains { $0.text == "git status" })
+    }
+    
+    @Test func testClipsDeletionAndConfirmationPreferences() async throws {
+        UserDefaults.standard.removeObject(forKey: "confirmBeforeDeleting")
+        
+        let state = AppState()
+        #expect(state.confirmBeforeDeleting == true) // default
+        
+        state.confirmBeforeDeleting = false
+        #expect(UserDefaults.standard.bool(forKey: "confirmBeforeDeleting") == false)
+        
+        // Add a clip
+        state.monitor.clearHistory()
+        let pboard = NSPasteboard.general
+        pboard.clearContents()
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString("test-delete-item", forType: .string)
+        state.monitor.checkPasteboard()
+        
+        #expect(state.clips.count == 1)
+        let clip = try #require(state.clips.first)
+        
+        // Delete it
+        state.deleteClip(clip)
+        #expect(state.clips.isEmpty)
+    }
 }
 
