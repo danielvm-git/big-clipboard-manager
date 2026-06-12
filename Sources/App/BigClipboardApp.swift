@@ -8,5 +8,9 @@ struct BigClipboardApp: App {
         MenuBarExtra("BigClipboard", systemImage: "paperclip") {
             DropdownMenu(appState: appState)
         }
+        
+        Settings {
+            SettingsView(appState: appState)
+        }
     }
 }

@@ -38,6 +38,12 @@ public final class AppState {
         }
     }
     
+    public var maxDisplayClips: Int {
+        didSet {
+            UserDefaults.standard.set(maxDisplayClips, forKey: "maxDisplayClips")
+        }
+    }
+    
     public let monitor: ClipboardMonitor
     private let storage: StorageManager
     private let paster = ClipboardPaster()
@@ -47,14 +53,20 @@ public final class AppState {
         let autoStrip = UserDefaults.standard.bool(forKey: "isAutoStripEnabled")
         let launchAtStartup = UserDefaults.standard.bool(forKey: "isLaunchAtStartupEnabled")
         var limit = UserDefaults.standard.integer(forKey: "maxRememberedClips")
-        if limit <= 0 {
+        if limit <= 0 || limit > 9999 {
             limit = 80
+        }
+        
+        var displayLimit = UserDefaults.standard.integer(forKey: "maxDisplayClips")
+        if displayLimit <= 0 || displayLimit > 100 {
+            displayLimit = 20
         }
         
         self.isRecordingEnabled = recording
         self.isAutoStripEnabled = autoStrip
         self.isLaunchAtStartupEnabled = launchAtStartup
         self.maxRememberedClips = limit
+        self.maxDisplayClips = displayLimit
         
         // Sync launch at startup setting with system registration
         do {

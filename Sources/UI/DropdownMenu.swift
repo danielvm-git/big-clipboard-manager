@@ -15,7 +15,7 @@ public struct DropdownMenu: View {
         
         Divider()
         
-        let displayed = Array(appState.clips.prefix(20))
+        let displayed = Array(appState.clips.prefix(appState.maxDisplayClips))
         if displayed.isEmpty {
             Button("No Clips Stored") {}
                 .disabled(true)

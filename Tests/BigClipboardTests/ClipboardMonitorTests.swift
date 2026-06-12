@@ -46,10 +46,10 @@ struct ClipboardMonitorTests {
         
         let pboard = NSPasteboard.general
         
-        for i in 1...5 {
+        for index in 1...5 {
             pboard.clearContents()
             pboard.declareTypes([.string], owner: nil)
-            pboard.setString("item-\(i)", forType: .string)
+            pboard.setString("item-\(index)", forType: .string)
             monitor.checkPasteboard()
         }
         
@@ -189,3 +189,49 @@ struct StorageManagerTests {
         #expect(UserDefaults.standard.bool(forKey: "isLaunchAtStartupEnabled") == false)
     }
 }
+
+@Suite("AppState Settings Tests")
+@MainActor
+struct AppStateSettingsTests {
+    @Test func testSettingsDefaultsAndUpdates() async throws {
+        // Clear existing keys to test defaults
+        UserDefaults.standard.removeObject(forKey: "maxRememberedClips")
+        UserDefaults.standard.removeObject(forKey: "maxDisplayClips")
+        
+        let state = AppState()
+        #expect(state.maxRememberedClips == 80)
+        #expect(state.maxDisplayClips == 20)
+        
+        // Update limits
+        state.maxRememberedClips = 150
+        state.maxDisplayClips = 50
+        
+        #expect(UserDefaults.standard.integer(forKey: "maxRememberedClips") == 150)
+        #expect(UserDefaults.standard.integer(forKey: "maxDisplayClips") == 50)
+    }
+    
+    @Test func testClipsTrimmingOnLimitChange() async throws {
+        let state = AppState()
+        state.maxRememberedClips = 10
+        
+        // Add 10 clips manually to the monitor
+        let monitor = state.monitor
+        monitor.clearHistory()
+        
+        let pboard = NSPasteboard.general
+        for index in 1...10 {
+            pboard.clearContents()
+            pboard.declareTypes([.string], owner: nil)
+            pboard.setString("clip-\(index)", forType: .string)
+            monitor.checkPasteboard()
+        }
+        
+        #expect(monitor.clips.count == 10)
+        
+        // Decrease limits to 5, it should automatically trim
+        state.maxRememberedClips = 5
+        #expect(monitor.clips.count == 5)
+        #expect(monitor.clips.first?.text == "clip-10")
+    }
+}
+

@@ -2,12 +2,12 @@ id: e03
 title: "Preferences Window & Settings Management"
 wsjf: 2.8
 total_bcps: 7
-status: todo
+status: in_progress
 stories:
   - id: e03s01
     title: "General Preferences Settings"
     bcps: 2
-    status: todo
+    status: done
     spec: e03s01-general.md
     tasks: e03s01-tasks.yaml
   - id: e03s02

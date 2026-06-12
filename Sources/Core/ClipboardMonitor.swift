@@ -10,7 +10,11 @@ public final class ClipboardMonitor: Sendable {
     public var onHistoryChanged: (@MainActor ([Clip]) -> Void)?
     public private(set) var clips: [Clip] = []
     
-    public var maxRememberedClips: Int = 80
+    public var maxRememberedClips: Int = 80 {
+        didSet {
+            trimHistory()
+        }
+    }
     public var isRecordingEnabled: Bool = true
     public var isAutoStripEnabled: Bool = false
     
@@ -92,5 +96,12 @@ public final class ClipboardMonitor: Sendable {
             clips = Array(clips.prefix(maxRememberedClips))
         }
         onHistoryChanged?(clips)
+    }
+    
+    private func trimHistory() {
+        if clips.count > maxRememberedClips {
+            clips = Array(clips.prefix(maxRememberedClips))
+            onHistoryChanged?(clips)
+        }
     }
 }

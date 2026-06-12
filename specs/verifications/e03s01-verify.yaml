@@ -1,0 +1,41 @@
+story_id: e03s01
+verified_at: "2026-06-12T05:25:00Z"
+verifier: verify-work
+phases:
+  smoke:
+    passed: true
+  build:
+    passed: true
+    command: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+  typecheck:
+    passed: true
+  lint:
+    passed: true
+    command: "swiftlint"
+  tests:
+    passed: true
+    command: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
+  manual:
+    steps:
+      - step: "Open Preferences window via dropdown menu or Cmd+Comma"
+        expected: "Standard settings panel appears with a General tab"
+        actual: "Preferences panel opened with General Settings view"
+        passed: true
+      - step: "Verify initial limits are loaded from UserDefaults"
+        expected: "Remember clippings is initialized to 80, display clippings to 20"
+        actual: "Initial values read 80 and 20 correctly"
+        passed: true
+      - step: "Update limits with valid integers and click away (lose focus)"
+        expected: "Values are stored in UserDefaults and AppState immediately"
+        actual: "Values saved successfully, clips trimmed if lower limit set"
+        passed: true
+      - step: "Enter invalid inputs (e.g. abc or negative numbers) and lose focus"
+        expected: "System shows red border/validation highlight and doesn't save to AppState"
+        actual: "Validation error displayed with red highlight, settings remained unchanged"
+        passed: true
+      - step: "Toggle Recording and Launch at Startup checkboxes"
+        expected: "Values toggled and synced with ClipboardMonitor and SMAppService"
+        actual: "Toggles updated and persistent in UserDefaults"
+        passed: true
+  gaps:
+    closed: true

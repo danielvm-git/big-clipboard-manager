@@ -1,13 +1,13 @@
 story_id: e03s01
 title: "General Preferences Settings"
-status: todo
+status: done
 bcps: 2
 tasks:
   - id: 1
     description: "Create GeneralSettingsView with text inputs for counts and active checkboxes"
     verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
-    status: todo
+    status: done
   - id: 2
     description: "Implement bounds validation logic and bind configurations directly to UserDefaults"
     verify: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
-    status: todo
+    status: done
