@@ -1,0 +1,17 @@
+story_id: e02s01
+title: "Status Bar Item & Dropdown Menu"
+status: todo
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create DropdownMenu view and populate items dynamically from AppState"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo
+  - id: 2
+    description: "Add keyboard shortcut bindings (Command+0 through Command+9) to dropdown items"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo
+  - id: 3
+    description: "Implement copy-back and virtual command-v key simulation using Quartz CoreGraphics events"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo

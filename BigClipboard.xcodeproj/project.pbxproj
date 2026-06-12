@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		093E2B9C4FFCAE4994FEC9E8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BF4EAC42260C9A5488BE0F /* AppState.swift */; };
+		228D40E25377C84376D51784 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */; };
+		54C2659FDE0F63A449C34BA4 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7694D2CE020DC3BEAF7194 /* Clip.swift */; };
 		B743DEED19F222DEC24701CC /* BigClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */; };
+		EB7EB5C2A7D768BC6614454F /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */; };
 		EF1384DC1C89CCC7025A164B /* BigClipboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63CFF675D59630DEAF95BE7 /* BigClipboardApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,17 +26,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E7694D2CE020DC3BEAF7194 /* Clip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clip.swift; sourceTree = "<group>"; };
+		294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
+		42BF4EAC42260C9A5488BE0F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigClipboardTests.swift; sourceTree = "<group>"; };
 		8407F17530840C6C137A2739 /* BigClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E58D37881C3465E56CD177A /* BigClipboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigClipboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitorTests.swift; sourceTree = "<group>"; };
 		F63CFF675D59630DEAF95BE7 /* BigClipboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigClipboardApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		2E599C22E886E60EE888FE03 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1E7694D2CE020DC3BEAF7194 /* Clip.swift */,
+				294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		5F17B060785D4E89A7E0E304 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				6E83BC1A5089316A4BB09848 /* App */,
+				2E599C22E886E60EE888FE03 /* Core */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -40,6 +58,7 @@
 		6E83BC1A5089316A4BB09848 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				42BF4EAC42260C9A5488BE0F /* AppState.swift */,
 				F63CFF675D59630DEAF95BE7 /* BigClipboardApp.swift */,
 			);
 			path = App;
@@ -75,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */,
+				F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */,
 			);
 			path = BigClipboardTests;
 			sourceTree = "<group>";
@@ -161,7 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093E2B9C4FFCAE4994FEC9E8 /* AppState.swift in Sources */,
 				EF1384DC1C89CCC7025A164B /* BigClipboardApp.swift in Sources */,
+				54C2659FDE0F63A449C34BA4 /* Clip.swift in Sources */,
+				228D40E25377C84376D51784 /* ClipboardMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B743DEED19F222DEC24701CC /* BigClipboardTests.swift in Sources */,
+				EB7EB5C2A7D768BC6614454F /* ClipboardMonitorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

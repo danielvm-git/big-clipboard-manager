@@ -1,0 +1,13 @@
+story_id: e02s03
+title: "Launch at Startup Integration"
+status: todo
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create StartupManager wrapper class to check and change SMAppService registration"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo
+  - id: 2
+    description: "Bind startup state to UserDefaults in AppState"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo

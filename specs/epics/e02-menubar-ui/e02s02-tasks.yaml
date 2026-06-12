@@ -1,0 +1,13 @@
+story_id: e02s02
+title: "Auto-Strip Formatting Toggle"
+status: todo
+bcps: 2
+tasks:
+  - id: 1
+    description: "Add isAutoStripEnabled state to AppState with UserDefaults backing"
+    verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
+    status: todo
+  - id: 2
+    description: "Implement formatting stripping and loop avoidance logic in ClipboardMonitor"
+    verify: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
+    status: todo

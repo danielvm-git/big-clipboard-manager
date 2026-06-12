@@ -1,0 +1,24 @@
+id: e02
+title: "Menu Bar Dropdown and Application Lifecycle"
+wsjf: 7.0
+total_bcps: 7
+status: todo
+stories:
+  - id: e02s01
+    title: "Status Bar Item & Dropdown Menu"
+    bcps: 3
+    status: todo
+    spec: e02s01-menubar.md
+    tasks: e02s01-tasks.yaml
+  - id: e02s02
+    title: "Auto-Strip Formatting Toggle"
+    bcps: 2
+    status: todo
+    spec: e02s02-autostrip.md
+    tasks: e02s02-tasks.yaml
+  - id: e02s03
+    title: "Launch at Startup Integration"
+    bcps: 2
+    status: todo
+    spec: e02s03-startup.md
+    tasks: e02s03-tasks.yaml

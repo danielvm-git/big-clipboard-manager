@@ -1,4 +1,31 @@
-# Scope of BigClipboard
-features: []
-out_of_scope: []
-success_criteria: []
+features:
+  - name: "Clipboard History Tracking"
+    description: "Background polling of NSPasteboard.general to track and store copied text items."
+    success_criteria: "Successfully detects new copied text, ignores duplicate consecutive copies, and maintains in-memory history."
+  - name: "Plain Text Auto-Strip Mode"
+    description: "Option to automatically strip all formatting (RTF, HTML, custom fonts) from copied text and write plain text back to the clipboard."
+    success_criteria: "When enabled, any text copied immediately has its formatting removed, making normal cmd+v paste plain text."
+  - name: "Menu Bar Interface"
+    description: "Status bar item presenting the list of recent clips, a quick toggle for Auto-Strip, clear option, and access to Preferences."
+    success_criteria: "Clips display cleanly up to N limits, keyboard shortcuts (cmd+0 to cmd+9) function when menu is open, selecting a clip copies it and pastes it."
+  - name: "Preferences: General"
+    description: "Settings for custom history limit, display limit, launch-at-login setting, and record toggle."
+    success_criteria: "Saves settings persistently in standard UserDefaults; launch-at-login registers correctly using modern macOS API."
+  - name: "Preferences: Ignored Apps"
+    description: "Allows users to choose specific running applications (such as password managers or IDEs) whose copied content should be ignored."
+    success_criteria: "Tracks running apps dynamically, displays them in a checklist, and excludes clipboard items originating from checked apps."
+  - name: "Preferences: Clips Management"
+    description: "A management interface with a search filter, list of all clips, deletion capabilities, and deletion confirmation prompt."
+    success_criteria: "Displays all cached history, filters in real-time by search query, and deletes items safely on confirmation."
+
+out_of_scope:
+  - "Non-text clipboard monitoring (images, files, pdfs, audio) - only plain text/rich text is supported."
+  - "Cloud syncing or sharing clipboard history between devices."
+  - "Custom keyboard-triggerable dashboard overlay (e.g. pasteboard launcher) - the menu bar is the primary UI."
+  - "SQLite database storage - history is written to a compact JSON file in Application Support."
+
+success_criteria:
+  - "App runs cleanly as a macOS background/agent app (no Dock icon, LSUIElement=YES)."
+  - "Clipboard history is kept up-to-date with negligible CPU usage (throttled pasteboard changes)."
+  - "Auto-Strip operates transparently in less than 5ms upon copy detection."
+  - "Persistent settings and history files load reliably without corruption fallbacks."

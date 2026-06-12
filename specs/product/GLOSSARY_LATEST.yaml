@@ -1,2 +1,5 @@
-# Glossary for BigClipboard
-terms: {}
+terms:
+  Clip: "An individual text item copied to the system clipboard, stored in history."
+  Auto-Strip: "A mode where styling (fonts, HTML, RTF) is automatically removed from copied text immediately upon copy detection."
+  Ignored App: "An application whose bundle identifier is registered in a user blacklist to prevent any copies originating from it from being stored in history."
+  NSPasteboard: "The native macOS Cocoa pasteboard API representing the system-wide clipboard history."

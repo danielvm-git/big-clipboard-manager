@@ -1,4 +1,4 @@
-active_flow: discover
+active_flow: plan
 environment:
   swift: "6.3.2"
   xcodegen: "2.45.4"
@@ -6,7 +6,7 @@ environment:
 epic_cycle:
   story_bcps: 0
 handoff:
-  next_skill: survey-context
+  next_skill: plan-work
 metrics:
   story_start: null
   story_end: null

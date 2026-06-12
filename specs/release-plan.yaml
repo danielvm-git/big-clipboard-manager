@@ -1,4 +1,19 @@
 release:
-  version: 0.1.0
+  version: "0.1.0"
+  codename: "BigClipboard Initial Release"
+  status: planning
+  semantic_release: true
   bump_hint: minor
-epics: []
+epics:
+  - id: e01
+    title: "Clipboard History Monitoring and Persistence"
+    wsjf: 9.3
+    capsule_dir: epics/e01-clipboard-core
+  - id: e02
+    title: "Menu Bar Dropdown and Application Lifecycle"
+    wsjf: 7.0
+    capsule_dir: epics/e02-menubar-ui
+  - id: e03
+    title: "Preferences Window & Settings Management"
+    wsjf: 2.8
+    capsule_dir: epics/e03-preferences-ui

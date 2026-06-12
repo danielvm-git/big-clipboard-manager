@@ -1,3 +1,7 @@
-# Vision for BigClipboard
-initiative: "Provide a seamless, unified macOS clipboard utility combining history storage and automatic formatting stripping."
-goals: []
+initiative: "Provide a cohesive, local-first macOS clipboard utility that aggregates clipboard history and offers instant, toggleable plain-text stripping to streamline modern text editing and copying workflows without compromising security or system resources."
+goals:
+  - "Provide zero-latency clipboard monitoring and formatting stripping."
+  - "Maintain a clean, modern macOS menu bar interface with a premium SwiftUI preferences panel."
+  - "Implement ignored applications filtering to protect sensitive inputs (e.g. password managers)."
+  - "Persist history cleanly in a local JSON file with minimal disk overhead."
+  - "Optimize CPU and memory usage through efficient polling and throttled disk writes."
