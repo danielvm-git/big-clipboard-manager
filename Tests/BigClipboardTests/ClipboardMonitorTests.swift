@@ -56,6 +56,48 @@ struct ClipboardMonitorTests {
         #expect(monitor.clips.count == 3)
         #expect(monitor.clips.first?.text == "item-5")
     }
+    
+    @Test func testAutoStripFormatting() async throws {
+        let monitor = ClipboardMonitor()
+        monitor.isAutoStripEnabled = true
+        
+        let pboard = NSPasteboard.general
+        pboard.clearContents()
+        
+        pboard.declareTypes([.string, .rtf], owner: nil)
+        pboard.setString("styled-text", forType: .string)
+        pboard.setData("{\\rtf1 styled-text}".data(using: .utf8)!, forType: .rtf)
+        
+        monitor.checkPasteboard()
+        
+        #expect(monitor.clips.count == 1)
+        #expect(monitor.clips.first?.text == "styled-text")
+        
+        let types = pboard.types ?? []
+        #expect(types.contains(.string))
+        #expect(!types.contains(.rtf))
+    }
+    
+    @Test func testAutoStripDisabledPreservesFormatting() async throws {
+        let monitor = ClipboardMonitor()
+        monitor.isAutoStripEnabled = false
+        
+        let pboard = NSPasteboard.general
+        pboard.clearContents()
+        
+        pboard.declareTypes([.string, .rtf], owner: nil)
+        pboard.setString("styled-text-2", forType: .string)
+        pboard.setData("{\\rtf1 styled-text-2}".data(using: .utf8)!, forType: .rtf)
+        
+        monitor.checkPasteboard()
+        
+        #expect(monitor.clips.count == 1)
+        #expect(monitor.clips.first?.text == "styled-text-2")
+        
+        let types = pboard.types ?? []
+        #expect(types.contains(.string))
+        #expect(types.contains(.rtf))
+    }
 }
 
 @Suite("StorageManager Tests")
@@ -136,5 +178,14 @@ struct StorageManagerTests {
         #expect(loaded.isEmpty)
         #expect(fileManager.fileExists(atPath: corruptedURL.path))
         #expect(!fileManager.fileExists(atPath: fileURL.path))
+    }
+    
+    @Test func testStartupManagerToggling() async throws {
+        let state = AppState()
+        state.isLaunchAtStartupEnabled = true
+        #expect(UserDefaults.standard.bool(forKey: "isLaunchAtStartupEnabled") == true)
+        
+        state.isLaunchAtStartupEnabled = false
+        #expect(UserDefaults.standard.bool(forKey: "isLaunchAtStartupEnabled") == false)
     }
 }

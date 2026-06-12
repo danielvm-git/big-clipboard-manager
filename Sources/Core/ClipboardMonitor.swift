@@ -12,6 +12,7 @@ public final class ClipboardMonitor: Sendable {
     
     public var maxRememberedClips: Int = 80
     public var isRecordingEnabled: Bool = true
+    public var isAutoStripEnabled: Bool = false
     
     public init(initialClips: [Clip] = []) {
         self.clips = initialClips
@@ -42,6 +43,19 @@ public final class ClipboardMonitor: Sendable {
         guard let text = pasteboard.string(forType: .string),
               !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             return
+        }
+        
+        // Check if there are rich formatting representations on the pasteboard
+        let richTypes: [NSPasteboard.PasteboardType] = [.rtf, .rtfd, .html, .multipleTextSelection]
+        let hasRichFormat = pasteboard.types?.contains { richTypes.contains($0) } ?? false
+        
+        if isAutoStripEnabled && hasRichFormat {
+            // Write only plain text string back to system clipboard
+            pasteboard.clearContents()
+            pasteboard.declareTypes([.string], owner: nil)
+            pasteboard.setString(text, forType: .string)
+            // Synchronize changeCount to avoid self-trigger loop on the next poll
+            lastChangeCount = pasteboard.changeCount
         }
         
         // Duplicate check (consecutive duplicate)

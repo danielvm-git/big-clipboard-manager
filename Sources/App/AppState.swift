@@ -13,6 +13,24 @@ public final class AppState {
         }
     }
     
+    public var isAutoStripEnabled: Bool {
+        didSet {
+            monitor.isAutoStripEnabled = isAutoStripEnabled
+            UserDefaults.standard.set(isAutoStripEnabled, forKey: "isAutoStripEnabled")
+        }
+    }
+    
+    public var isLaunchAtStartupEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(isLaunchAtStartupEnabled, forKey: "isLaunchAtStartupEnabled")
+            do {
+                try StartupManager.shared.setEnabled(isLaunchAtStartupEnabled)
+            } catch {
+                print("AppState: Failed to set launch at startup state: \(error)")
+            }
+        }
+    }
+    
     public var maxRememberedClips: Int {
         didSet {
             monitor.maxRememberedClips = maxRememberedClips
@@ -22,16 +40,28 @@ public final class AppState {
     
     public let monitor: ClipboardMonitor
     private let storage: StorageManager
+    private let paster = ClipboardPaster()
     
     public init() {
         let recording = UserDefaults.standard.object(forKey: "isRecordingEnabled") as? Bool ?? true
+        let autoStrip = UserDefaults.standard.bool(forKey: "isAutoStripEnabled")
+        let launchAtStartup = UserDefaults.standard.bool(forKey: "isLaunchAtStartupEnabled")
         var limit = UserDefaults.standard.integer(forKey: "maxRememberedClips")
         if limit <= 0 {
             limit = 80
         }
         
         self.isRecordingEnabled = recording
+        self.isAutoStripEnabled = autoStrip
+        self.isLaunchAtStartupEnabled = launchAtStartup
         self.maxRememberedClips = limit
+        
+        // Sync launch at startup setting with system registration
+        do {
+            try StartupManager.shared.setEnabled(launchAtStartup)
+        } catch {
+            print("AppState: Failed to sync initial launch at startup registration: \(error)")
+        }
         
         let storageManager = StorageManager()
         self.storage = storageManager
@@ -39,6 +69,7 @@ public final class AppState {
         let initialClips = storageManager.loadHistory()
         self.monitor = ClipboardMonitor(initialClips: initialClips)
         self.monitor.isRecordingEnabled = recording
+        self.monitor.isAutoStripEnabled = autoStrip
         self.monitor.maxRememberedClips = limit
         self.clips = self.monitor.clips
         
@@ -48,5 +79,17 @@ public final class AppState {
         }
         
         self.monitor.startPolling()
+    }
+    
+    public func selectAndPasteClip(_ clip: Clip) {
+        paster.copyAndPaste(text: clip.text)
+    }
+    
+    public func deleteClip(_ clip: Clip) {
+        monitor.deleteClip(id: clip.id)
+    }
+    
+    public func clearHistory() {
+        monitor.clearHistory()
     }
 }
