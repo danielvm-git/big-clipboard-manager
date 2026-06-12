@@ -10,3 +10,9 @@
   end: "2026-06-12T05:31:00Z"
   cycle_minutes: 4
   bcp_per_hour: 30.0
+- id: e03s03
+  bcps: 3
+  start: "2026-06-12T05:33:00Z"
+  end: "2026-06-12T05:37:00Z"
+  cycle_minutes: 4
+  bcp_per_hour: 45.0
