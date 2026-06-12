@@ -63,7 +63,10 @@ public final class ClipboardMonitor: Sendable {
         
         if let bundleId = activeBundleId {
             if ignoredAppBundleIds.contains(bundleId) {
-                print("ClipboardMonitor: Ignored copy from \(bundleId) (length: \(text.count))")
+                JSONLogger.shared.info("ClipboardMonitor: Ignored copy from \(bundleId)", metadata: [
+                    "bundleId": bundleId,
+                    "textLength": String(text.count)
+                ])
                 return
             }
         }

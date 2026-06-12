@@ -136,12 +136,12 @@ public struct ClipsManagementView: View {
             if response == .alertFirstButtonReturn {
                 appState.deleteClip(clip)
                 selectedClipId = nil
-                print("ClipsManagementView: Deleted clip \(clip.id) with confirmation")
+                JSONLogger.shared.info("ClipsManagementView: Deleted clip with confirmation", metadata: ["clipId": clip.id.uuidString])
             }
         } else {
             appState.deleteClip(clip)
             selectedClipId = nil
-            print("ClipsManagementView: Deleted clip \(clip.id) immediately")
+            JSONLogger.shared.info("ClipsManagementView: Deleted clip immediately", metadata: ["clipId": clip.id.uuidString])
         }
     }
     

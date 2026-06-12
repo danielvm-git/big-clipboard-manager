@@ -38,7 +38,7 @@ public final class StorageManager: Sendable {
             // Try to backup the corrupted file, removing existing corrupted backup if present
             try? fileManager.removeItem(at: corruptedURL)
             try? fileManager.moveItem(at: fileURL, to: corruptedURL)
-            print("StorageManager error: Corrupted history file found. Backup created. Fallback to empty list.")
+            JSONLogger.shared.error("StorageManager: Corrupted history file found. Backup created. Fallback to empty list.")
             return []
         }
     }
@@ -74,7 +74,7 @@ public final class StorageManager: Sendable {
             } catch is CancellationError {
                 // Swallowed: task was cancelled
             } catch {
-                print("StorageManager write failure: \(error)")
+                JSONLogger.shared.error("StorageManager: Write failure", error: error)
             }
         }
     }

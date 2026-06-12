@@ -9,11 +9,19 @@ Stack: Swift 6.0 / SwiftUI / macOS 14.0+
 ## Commands
 | Action | Command |
 |--------|---------|
+| Setup  | `./scripts/setup.sh` |
 | Run    | `open build/Debug/BigClipboard.app` |
 | Test   | `xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests` |
 | Build  | `xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build` |
 | Lint   | `swiftlint` (if installed) |
 | Regen project | `xcodegen --spec project.yml` |
+
+## Observability
+| What | Command |
+|------|---------|
+| View logs | `tail -f ~/Library/Application\ Support/com.danielvm.bigclipboard/app.log` |
+| Health check | `pgrep BigClipboard && echo "App is running" || echo "App is not running"` |
+
 
 ## Architecture
 A native macOS SwiftUI app centered around MenuBarExtra. AppState coordinates NSPasteboard polling, history retention, and plain-text stripping with persistent JSON storage.

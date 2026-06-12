@@ -21,12 +21,12 @@ public final class StartupManager: Sendable {
         if enabled {
             if status != .enabled {
                 try SMAppService.mainApp.register()
-                print("StartupManager: Registered successfully")
+                JSONLogger.shared.info("StartupManager: Registered successfully")
             }
         } else {
             if status == .enabled {
                 try SMAppService.mainApp.unregister()
-                print("StartupManager: Unregistered successfully")
+                JSONLogger.shared.info("StartupManager: Unregistered successfully")
             }
         }
     }

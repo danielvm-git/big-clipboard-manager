@@ -26,7 +26,7 @@ public final class AppState {
             do {
                 try StartupManager.shared.setEnabled(isLaunchAtStartupEnabled)
             } catch {
-                print("AppState: Failed to set launch at startup state: \(error)")
+                JSONLogger.shared.error("AppState: Failed to set launch at startup state", error: error)
             }
         }
     }
@@ -90,7 +90,7 @@ public final class AppState {
         do {
             try StartupManager.shared.setEnabled(launchAtStartup)
         } catch {
-            print("AppState: Failed to sync initial launch at startup registration: \(error)")
+            JSONLogger.shared.error("AppState: Failed to sync initial launch at startup registration", error: error)
         }
         
         let storageManager = StorageManager()

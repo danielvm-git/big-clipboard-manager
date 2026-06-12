@@ -13,12 +13,14 @@
 		228D40E25377C84376D51784 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */; };
 		5425995577D57A2E7A4576AD /* ClipboardPaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0CCB738F7B58B6C8A6917 /* ClipboardPaster.swift */; };
 		54C2659FDE0F63A449C34BA4 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7694D2CE020DC3BEAF7194 /* Clip.swift */; };
+		60F1643640FADF924E1B8CA3 /* JSONLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A1686810EA933E87DDAE6 /* JSONLogger.swift */; };
 		764E11BEEB46AC45252EB3BD /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23112068B7AB87EB8C5ECB09 /* StartupManager.swift */; };
 		76C010DF7618D19D1BAEA64B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B593CBE729E0E488C4571 /* SettingsView.swift */; };
 		88BD45D01A605C83A1B96025 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF2A5F8D793A98069DD7680 /* DropdownMenu.swift */; };
 		B743DEED19F222DEC24701CC /* BigClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */; };
 		C5A0F2ACFDC3556693E9335F /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8045759EDD6ECE145EA44C55 /* GeneralSettingsView.swift */; };
 		C8C3440A136C8E01FE932694 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B07DD83D966F3EC4BE848B /* StorageManager.swift */; };
+		E882BF9A1AB2860F2B8AB959 /* JSONLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC903956C823C202011439A /* JSONLoggerTests.swift */; };
 		EB7EB5C2A7D768BC6614454F /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */; };
 		EF1384DC1C89CCC7025A164B /* BigClipboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63CFF675D59630DEAF95BE7 /* BigClipboardApp.swift */; };
 /* End PBXBuildFile section */
@@ -37,12 +39,14 @@
 		1E7694D2CE020DC3BEAF7194 /* Clip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clip.swift; sourceTree = "<group>"; };
 		23112068B7AB87EB8C5ECB09 /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
+		3B6A1686810EA933E87DDAE6 /* JSONLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLogger.swift; sourceTree = "<group>"; };
 		42BF4EAC42260C9A5488BE0F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5712AE32E56861B1541DB49B /* IgnoredAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoredAppsView.swift; sourceTree = "<group>"; };
 		5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigClipboardTests.swift; sourceTree = "<group>"; };
 		8045759EDD6ECE145EA44C55 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		8407F17530840C6C137A2739 /* BigClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E58D37881C3465E56CD177A /* BigClipboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigClipboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC903956C823C202011439A /* JSONLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoggerTests.swift; sourceTree = "<group>"; };
 		8FF2A5F8D793A98069DD7680 /* DropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
 		93B07DD83D966F3EC4BE848B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		9CE5CDBBCC4CBE1143EA8661 /* ClipsManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsManagementView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,7 @@
 				1E7694D2CE020DC3BEAF7194 /* Clip.swift */,
 				294DB62CFD2BB7386DF0E5FC /* ClipboardMonitor.swift */,
 				A0F0CCB738F7B58B6C8A6917 /* ClipboardPaster.swift */,
+				3B6A1686810EA933E87DDAE6 /* JSONLogger.swift */,
 				23112068B7AB87EB8C5ECB09 /* StartupManager.swift */,
 				93B07DD83D966F3EC4BE848B /* StorageManager.swift */,
 			);
@@ -127,6 +132,7 @@
 			children = (
 				5DF2FB86686B740AADF1A4BE /* BigClipboardTests.swift */,
 				F2A49496A2D8E4770F75D4AB /* ClipboardMonitorTests.swift */,
+				8EC903956C823C202011439A /* JSONLoggerTests.swift */,
 			);
 			path = BigClipboardTests;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				88BD45D01A605C83A1B96025 /* DropdownMenu.swift in Sources */,
 				C5A0F2ACFDC3556693E9335F /* GeneralSettingsView.swift in Sources */,
 				1DBD60904EB1F2242EC9DE10 /* IgnoredAppsView.swift in Sources */,
+				60F1643640FADF924E1B8CA3 /* JSONLogger.swift in Sources */,
 				76C010DF7618D19D1BAEA64B /* SettingsView.swift in Sources */,
 				764E11BEEB46AC45252EB3BD /* StartupManager.swift in Sources */,
 				C8C3440A136C8E01FE932694 /* StorageManager.swift in Sources */,
@@ -234,6 +241,7 @@
 			files = (
 				B743DEED19F222DEC24701CC /* BigClipboardTests.swift in Sources */,
 				EB7EB5C2A7D768BC6614454F /* ClipboardMonitorTests.swift in Sources */,
+				E882BF9A1AB2860F2B8AB959 /* JSONLoggerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
