@@ -1,0 +1,4 @@
+release:
+  version: 0.1.0
+  bump_hint: minor
+epics: []

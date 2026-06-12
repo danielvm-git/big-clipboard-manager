@@ -1,0 +1,53 @@
+name: BigClipboard
+options:
+  bundleIdPrefix: com.danielvm
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: ""
+
+targets:
+  BigClipboard:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.danielvm.bigclipboard
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_APP_SANDBOX: NO
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+
+  BigClipboardTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests/BigClipboardTests
+    dependencies:
+      - target: BigClipboard
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  BigClipboard:
+    build:
+      targets:
+        BigClipboard: all
+        BigClipboardTests: [test]
+    test:
+      targets:
+        - BigClipboardTests

@@ -1,0 +1,17 @@
+active_flow: discover
+environment:
+  swift: "6.3.2"
+  xcodegen: "2.45.4"
+  macos: "14.0+"
+epic_cycle:
+  story_bcps: 0
+handoff:
+  next_skill: survey-context
+metrics:
+  story_start: null
+  story_end: null
+  cycle_minutes: 0
+  bcp_per_hour: 0
+release:
+  last_tag: null
+  last_publish: null

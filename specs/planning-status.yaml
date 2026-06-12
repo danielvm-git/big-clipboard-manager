@@ -1,0 +1,7 @@
+phases:
+  discover: completed
+  elaborate: pending
+  plan: pending
+  build: pending
+  verify: pending
+  release: pending
