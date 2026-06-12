@@ -155,7 +155,7 @@ if [ -d specs/epics ] && [ -f specs/execution-status.yaml ]; then
     # Check if all stories in this epic are done
     ALL_DONE=true
     if [ -f "$capsule/epic.yaml" ]; then
-      for story_id in $(grep -o 'e[0-9]*s[0-9]*' "$capsule/epic.yaml" 2>/dev/null || true); do
+      for story_id in $(grep -E -o 'e[0-9]+s[0-9]+' "$capsule/epic.yaml" 2>/dev/null || true); do
         STATUS=$(grep "$story_id:" specs/execution-status.yaml 2>/dev/null | awk '{print $2}' || echo "todo")
         if [ "$STATUS" != "done" ]; then
           ALL_DONE=false

@@ -1,17 +1,17 @@
-active_flow: build_epic
-active_epic_id: e02
-active_story_id: e02s01
+active_flow: plan
+active_epic_id: e03
+active_story_id: null
 environment:
   swift: "6.3.2"
   xcodegen: "2.45.4"
   macos: "14.0+"
 epic_cycle:
-  step: 4
-  story_bcps: 3
+  step: 1
+  story_bcps: 0
 handoff:
-  next_skill: develop-tdd
+  next_skill: kickoff-branch
 metrics:
-  story_start: "2026-06-12T04:50:00Z"
+  story_start: null
   story_end: null
   cycle_minutes: 0
   bcp_per_hour: 0
