@@ -1,0 +1,6 @@
+- id: e03s01
+  bcps: 2
+  start: "2026-06-12T05:15:00Z"
+  end: "2026-06-12T05:26:00Z"
+  cycle_minutes: 11
+  bcp_per_hour: 10.9
