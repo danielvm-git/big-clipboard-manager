@@ -1,20 +1,20 @@
 active_flow: build_epic
 active_epic_id: e03
-active_story_id: e03s02
+active_story_id: null
 environment:
   swift: "6.3.2"
   xcodegen: "2.45.4"
   macos: "14.0+"
 epic_cycle:
-  step: 8
-  story_bcps: 2
+  step: 1
+  story_bcps: 0
 handoff:
-  next_skill: release-branch
+  next_skill: survey-context
 metrics:
-  story_start: "2026-06-12T05:15:00Z"
-  story_end: "2026-06-12T05:26:00Z"
-  cycle_minutes: 11
-  bcp_per_hour: 10.9
+  story_start: "2026-06-12T05:27:00Z"
+  story_end: "2026-06-12T05:31:00Z"
+  cycle_minutes: 4
+  bcp_per_hour: 30.0
 release:
   last_tag: null
   last_publish: null
