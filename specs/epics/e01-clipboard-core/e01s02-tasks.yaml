@@ -1,17 +1,17 @@
 story_id: e01s02
 title: "History Persistence via JSON"
-status: todo
+status: done
 bcps: 3
 tasks:
   - id: 1
     description: "Create StorageManager supporting directory resolution, JSON coding, and atomic writes"
     verify: "xcodegen --spec project.yml && xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
-    status: todo
+    status: done
   - id: 2
     description: "Add debounced/throttled write scheduling to StorageManager"
     verify: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
-    status: todo
+    status: done
   - id: 3
     description: "Implement corrupted file recovery backup rename-fallback logic"
     verify: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
-    status: todo
+    status: done

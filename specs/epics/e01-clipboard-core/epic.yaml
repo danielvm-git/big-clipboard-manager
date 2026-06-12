@@ -2,17 +2,17 @@ id: e01
 title: "Clipboard History Monitoring and Persistence"
 wsjf: 9.3
 total_bcps: 6
-status: todo
+status: done
 stories:
   - id: e01s01
     title: "Background Clipboard Monitoring"
     bcps: 3
-    status: todo
+    status: done
     spec: e01s01-monitoring.md
     tasks: e01s01-tasks.yaml
   - id: e01s02
     title: "History Persistence via JSON"
     bcps: 3
-    status: todo
+    status: done
     spec: e01s02-persistence.md
     tasks: e01s02-tasks.yaml

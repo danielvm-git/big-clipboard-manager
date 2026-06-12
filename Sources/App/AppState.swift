@@ -21,6 +21,7 @@ public final class AppState {
     }
     
     public let monitor: ClipboardMonitor
+    private let storage: StorageManager
     
     public init() {
         let recording = UserDefaults.standard.object(forKey: "isRecordingEnabled") as? Bool ?? true
@@ -32,7 +33,10 @@ public final class AppState {
         self.isRecordingEnabled = recording
         self.maxRememberedClips = limit
         
-        let initialClips: [Clip] = []
+        let storageManager = StorageManager()
+        self.storage = storageManager
+        
+        let initialClips = storageManager.loadHistory()
         self.monitor = ClipboardMonitor(initialClips: initialClips)
         self.monitor.isRecordingEnabled = recording
         self.monitor.maxRememberedClips = limit
@@ -40,6 +44,7 @@ public final class AppState {
         
         self.monitor.onHistoryChanged = { [weak self] newClips in
             self?.clips = newClips
+            self?.storage.saveHistoryAsync(newClips)
         }
         
         self.monitor.startPolling()
