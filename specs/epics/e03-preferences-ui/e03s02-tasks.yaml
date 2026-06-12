@@ -1,13 +1,13 @@
 story_id: e03s02
 title: "Ignored Applications Blacklist"
-status: todo
+status: done
 bcps: 2
 tasks:
   - id: 1
     description: "Create IgnoredAppsView listing running GUI applications with checkboxes"
     verify: "xcodebuild -project BigClipboard.xcodeproj -scheme BigClipboard build"
-    status: todo
+    status: done
   - id: 2
     description: "Implement frontmost bundle ID blacklist checking in ClipboardMonitor"
     verify: "xcodebuild test -project BigClipboard.xcodeproj -scheme BigClipboard -only-testing BigClipboardTests"
-    status: todo
+    status: done

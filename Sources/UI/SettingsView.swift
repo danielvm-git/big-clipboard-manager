@@ -15,7 +15,13 @@ public struct SettingsView: View {
                     Label("General", systemImage: "gearshape")
                 }
                 .tag("general")
+            
+            IgnoredAppsView(appState: appState)
+                .tabItem {
+                    Label("Ignored Apps", systemImage: "hand.raised")
+                }
+                .tag("ignored")
         }
-        .frame(width: 440, height: 320)
+        .frame(width: 480, height: 400)
     }
 }

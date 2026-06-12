@@ -17,6 +17,10 @@ public final class ClipboardMonitor: Sendable {
     }
     public var isRecordingEnabled: Bool = true
     public var isAutoStripEnabled: Bool = false
+    public var ignoredAppBundleIds: [String] = []
+    
+    /// Optional closure to mock frontmost application bundle ID in unit tests.
+    public var testFrontmostBundleIdProvider: (@MainActor () -> String?)?
     
     public init(initialClips: [Clip] = []) {
         self.clips = initialClips
@@ -47,6 +51,21 @@ public final class ClipboardMonitor: Sendable {
         guard let text = pasteboard.string(forType: .string),
               !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             return
+        }
+        
+        // Blacklist check
+        let activeBundleId: String?
+        if let provider = testFrontmostBundleIdProvider {
+            activeBundleId = provider()
+        } else {
+            activeBundleId = NSWorkspace.shared.frontmostApplication?.bundleIdentifier
+        }
+        
+        if let bundleId = activeBundleId {
+            if ignoredAppBundleIds.contains(bundleId) {
+                print("ClipboardMonitor: Ignored copy from \(bundleId) (length: \(text.count))")
+                return
+            }
         }
         
         // Check if there are rich formatting representations on the pasteboard

@@ -233,5 +233,58 @@ struct AppStateSettingsTests {
         #expect(monitor.clips.count == 5)
         #expect(monitor.clips.first?.text == "clip-10")
     }
+    
+    @Test func testIgnoredApplicationsBlacklist() async throws {
+        let state = AppState()
+        let monitor = state.monitor
+        monitor.clearHistory()
+        
+        // Add an ignored app bundle ID
+        state.ignoredAppBundleIds = ["com.agilebits.onepassword-osx"]
+        
+        // Mock frontmost application to be 1Password
+        monitor.testFrontmostBundleIdProvider = {
+            "com.agilebits.onepassword-osx"
+        }
+        
+        let pboard = NSPasteboard.general
+        pboard.clearContents()
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString("secret-password", forType: .string)
+        
+        // Trigger check
+        monitor.checkPasteboard()
+        
+        // It should be ignored!
+        #expect(monitor.clips.isEmpty)
+        
+        // Now mock frontmost application to be Safari (not ignored)
+        monitor.testFrontmostBundleIdProvider = {
+            "com.apple.Safari"
+        }
+        
+        pboard.clearContents()
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString("public Safari text", forType: .string)
+        monitor.checkPasteboard()
+        
+        // It should be recorded!
+        #expect(monitor.clips.count == 1)
+        #expect(monitor.clips.first?.text == "public Safari text")
+        
+        // Now mock frontmost app to return nil (fallback)
+        monitor.testFrontmostBundleIdProvider = {
+            nil
+        }
+        
+        pboard.clearContents()
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString("anonymous text", forType: .string)
+        monitor.checkPasteboard()
+        
+        // It should be recorded!
+        #expect(monitor.clips.count == 2)
+        #expect(monitor.clips.first?.text == "anonymous text")
+    }
 }
 

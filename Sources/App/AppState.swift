@@ -44,6 +44,13 @@ public final class AppState {
         }
     }
     
+    public var ignoredAppBundleIds: [String] {
+        didSet {
+            monitor.ignoredAppBundleIds = ignoredAppBundleIds
+            UserDefaults.standard.set(ignoredAppBundleIds, forKey: "ignoredAppBundleIds")
+        }
+    }
+    
     public let monitor: ClipboardMonitor
     private let storage: StorageManager
     private let paster = ClipboardPaster()
@@ -62,11 +69,14 @@ public final class AppState {
             displayLimit = 20
         }
         
+        let ignoredApps = UserDefaults.standard.stringArray(forKey: "ignoredAppBundleIds") ?? []
+        
         self.isRecordingEnabled = recording
         self.isAutoStripEnabled = autoStrip
         self.isLaunchAtStartupEnabled = launchAtStartup
         self.maxRememberedClips = limit
         self.maxDisplayClips = displayLimit
+        self.ignoredAppBundleIds = ignoredApps
         
         // Sync launch at startup setting with system registration
         do {
@@ -83,6 +93,7 @@ public final class AppState {
         self.monitor.isRecordingEnabled = recording
         self.monitor.isAutoStripEnabled = autoStrip
         self.monitor.maxRememberedClips = limit
+        self.monitor.ignoredAppBundleIds = ignoredApps
         self.clips = self.monitor.clips
         
         self.monitor.onHistoryChanged = { [weak self] newClips in
